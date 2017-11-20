@@ -1,17 +1,15 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import {ApiProvider} from "../api/api";
 
-/*
-  Generated class for the GithubProvider provider.
-
-  See https://angular.io/guide/dependency-injection for more info on providers
-  and Angular DI.
-*/
 @Injectable()
 export class GithubProvider {
 
-  constructor(public http: HttpClient) {
-    console.log('Hello GithubProvider Provider');
+  constructor(public api: ApiProvider) {}
+
+  repositories(owner) {
+    return this.api.get('users/' + owner + '/repos');
   }
+
+
 
 }
